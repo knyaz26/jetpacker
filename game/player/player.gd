@@ -35,9 +35,11 @@ func check_where_player_looks():
 		$AnimatedSprite2D/AnimatedSprite2D2.flip_h = false
 		$AnimatedSprite2D/AnimatedSprite2D2.offset.x = 4
 		$AnimatedSprite2D/AnimatedSprite2D2.look_at(get_global_mouse_position())
+		$CPUParticles2D.position.x = -5
 	else:
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D/AnimatedSprite2D2.flip_h = true
 		$AnimatedSprite2D/AnimatedSprite2D2.offset.x = -4
 		$AnimatedSprite2D/AnimatedSprite2D2.look_at(get_global_mouse_position())
 		$AnimatedSprite2D/AnimatedSprite2D2.rotation_degrees += 180
+		$CPUParticles2D.position.x = 5
