@@ -32,5 +32,12 @@ func check_input_and_move(delta):
 func check_where_player_looks():
 	if get_global_mouse_position().x > position.x:
 		$AnimatedSprite2D.flip_h = false
-	if get_global_mouse_position().x < position.x:
+		$AnimatedSprite2D/AnimatedSprite2D2.flip_h = false
+		$AnimatedSprite2D/AnimatedSprite2D2.offset.x = 4
+		$AnimatedSprite2D/AnimatedSprite2D2.look_at(get_global_mouse_position())
+	else:
 		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D/AnimatedSprite2D2.flip_h = true
+		$AnimatedSprite2D/AnimatedSprite2D2.offset.x = -4
+		$AnimatedSprite2D/AnimatedSprite2D2.look_at(get_global_mouse_position())
+		$AnimatedSprite2D/AnimatedSprite2D2.rotation_degrees += 180
