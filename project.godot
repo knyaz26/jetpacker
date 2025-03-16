@@ -24,6 +24,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://effects/": "green",
 "res://game/": "orange"
 }
 

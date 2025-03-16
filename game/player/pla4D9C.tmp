@@ -77,6 +77,6 @@ sprite_frames = SubResource("SpriteFrames_01lwq")
 offset = Vector2(4, 0)
 
 [node name="firepoint" type="Node2D" parent="AnimatedSprite2D/AnimatedSprite2D2"]
-position = Vector2(10, 0)
+position = Vector2(9, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
