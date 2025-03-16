@@ -9,6 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	check_input_and_fly(delta)
 	check_input_and_move(delta)
+	check_where_player_looks()
 	apply_gravity(delta)
 	
 func apply_gravity(delta):
@@ -27,3 +28,9 @@ func check_input_and_move(delta):
 		position.x += 100 * delta
 	if Input.is_key_pressed(KEY_A):
 		position.x -= 100 * delta
+
+func check_where_player_looks():
+	if get_global_mouse_position().x > position.x:
+		$AnimatedSprite2D.flip_h = false
+	if get_global_mouse_position().x < position.x:
+		$AnimatedSprite2D.flip_h = true
