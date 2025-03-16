@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://v4hhqus1snc7"]
+
+[ext_resource type="Script" path="res://game/player/player.gd" id="1_eipwq"]
+[ext_resource type="Texture2D" uid="uid://by07xcbt5n8iv" path="res://game/player/player.png" id="1_pe1sp"]
+[ext_resource type="Texture2D" uid="uid://covdqwrmrcpu0" path="res://game/player/damage.png" id="2_bkkak"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2ayv"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a76tj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bkkak")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pe1sp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_eipwq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j2ayv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a76tj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
