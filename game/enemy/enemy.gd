@@ -47,7 +47,7 @@ func decide_and_shoot():
 		var aim_point = GameManager.position_player + Vector2(
 		randi_range(-global_position.distance_to(GameManager.position_player) / 4, global_position.distance_to(GameManager.position_player) / 4),
 		randi_range(-global_position.distance_to(GameManager.position_player) / 4, global_position.distance_to(GameManager.position_player) / 4))
-		bullet_instance.target = aim_point + (aim_point - global_position).normalized() * 100
+		bullet_instance.target = aim_point + (aim_point - global_position).normalized() * 1000
 		get_tree().root.add_child(bullet_instance)
 		var tween = create_tween()
 		tween.tween_callback(func(): fireable = true).set_delay(1)
