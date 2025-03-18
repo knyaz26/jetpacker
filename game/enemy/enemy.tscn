@@ -1,12 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://diagku6i77b4j"]
+[gd_scene load_steps=12 format=3 uid="uid://diagku6i77b4j"]
 
 [ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack_flames.png" id="1_3fqy6"]
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_66hjf"]
 [ext_resource type="Texture2D" uid="uid://bmwed62l82xxu" path="res://game/enemy/enemy.png" id="1_ic0ah"]
 [ext_resource type="Texture2D" uid="uid://ctdpc8wibft61" path="res://game/enemy/enemy_gun.png" id="3_h2i6r"]
+[ext_resource type="Texture2D" uid="uid://dbidlc4kp1af6" path="res://game/enemy/damage_enemy.png" id="3_qm0ko"]
 [ext_resource type="Texture2D" uid="uid://dg6m3sqigv38q" path="res://game/enemy/enemy_gun_fired.png" id="5_pndd3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkrtk"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oefi"]
 radius = 5.0
 height = 12.0
 
@@ -18,9 +23,17 @@ point_count = 2
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_qm0ko")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_ic0ah")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -50,6 +63,12 @@ script = ExtResource("1_66hjf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fkrtk")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_8oefi")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-5, 5)
 amount = 20
@@ -62,6 +81,7 @@ scale_amount_curve = SubResource("Curve_77d6s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6uu3x")
+autoplay = "default"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h2b8u")
@@ -71,4 +91,6 @@ offset = Vector2(2, 1)
 position = Vector2(8, 0)
 rotation = -0.0120388
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]

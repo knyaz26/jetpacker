@@ -46,8 +46,8 @@ func decide_and_shoot():
 		bullet_instance.rot = $AnimatedSprite2D2.rotation
 		bullet_instance.flip = $AnimatedSprite2D.flip_h
 		var aim_point = GameManager.position_player + Vector2(
-		randi_range(-global_position.distance_to(GameManager.position_player) / 3, global_position.distance_to(GameManager.position_player) / 3),
-		randi_range(-global_position.distance_to(GameManager.position_player) / 3, global_position.distance_to(GameManager.position_player) / 3))
+		randi_range(-global_position.distance_to(GameManager.position_player) / 4, global_position.distance_to(GameManager.position_player) / 3),
+		randi_range(-global_position.distance_to(GameManager.position_player) / 4, global_position.distance_to(GameManager.position_player) / 3))
 		bullet_instance.target = aim_point + (aim_point - global_position).normalized() * 1000
 		#idk why but this only apples to one dummy.
 		#bullet_instance.rot = (bullet_instance.position).angle_to(bullet_instance.target)
@@ -58,3 +58,9 @@ func decide_and_shoot():
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
 	$AnimatedSprite2D2.play("default")
+	
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	$AnimatedSprite2D.play("damage")
+	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play("default")

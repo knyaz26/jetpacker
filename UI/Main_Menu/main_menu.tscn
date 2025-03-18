@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfb2kwx521uuc"]
 
-[ext_resource type="Script" path="res://game/UI/Main_Menu/main_menu.gd" id="1_53bbt"]
+[ext_resource type="Script" path="res://UI/Main_Menu/main_menu.gd" id="1_53bbt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyhh4"]
 
