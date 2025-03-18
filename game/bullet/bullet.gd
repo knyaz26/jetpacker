@@ -6,10 +6,10 @@ var flip
 var vel
 
 func _ready() -> void:
-	$Sprite2D.flip_h = !(target.x > global_position.x)
+	$AnimatedSprite2D.flip_h = !(target.x > global_position.x)
 	rotation = rot
-	$Sprite2D.flip_h = flip
-	$Timer.start()
+	$AnimatedSprite2D.flip_h = flip
+	$Timer.start(1.0)
 	
 func _process(delta: float) -> void:
 	movement(delta)
@@ -23,4 +23,8 @@ func check_for_destroy_conditions():
 	pass
 
 func _on_timer_timeout() -> void:
+	$AnimatedSprite2D.play("bullet_collision")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
 	queue_free()
