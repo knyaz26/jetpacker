@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://daylo61yxew5l" path="res://game/player/players_gun2.png" id="5_kp28p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2ayv"]
-radius = 5.0
-height = 16.0
+radius = 2.0
+height = 8.0
 
 [sub_resource type="Curve" id="Curve_ii8xb"]
 _data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

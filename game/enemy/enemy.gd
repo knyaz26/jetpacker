@@ -38,7 +38,7 @@ func gun_aim():
 
 #if you ever come back to this code to figure out whats going on, i dont know either.
 func decide_and_shoot():
-	if GameManager.position_player.distance_to(global_position) < 250 and fireable:
+	if GameManager.position_player.distance_to(global_position) < 200 and fireable:
 		$AnimatedSprite2D2.play("fired")
 		fireable = false
 		var bullet_instance = bullet_scene.instantiate()
@@ -46,12 +46,14 @@ func decide_and_shoot():
 		bullet_instance.rot = $AnimatedSprite2D2.rotation
 		bullet_instance.flip = $AnimatedSprite2D.flip_h
 		var aim_point = GameManager.position_player + Vector2(
-		randi_range(-global_position.distance_to(GameManager.position_player) / 4, global_position.distance_to(GameManager.position_player) / 4),
-		randi_range(-global_position.distance_to(GameManager.position_player) / 4, global_position.distance_to(GameManager.position_player) / 4))
+		randi_range(-global_position.distance_to(GameManager.position_player) / 3, global_position.distance_to(GameManager.position_player) / 3),
+		randi_range(-global_position.distance_to(GameManager.position_player) / 3, global_position.distance_to(GameManager.position_player) / 3))
 		bullet_instance.target = aim_point + (aim_point - global_position).normalized() * 1000
+		#idk why but this only apples to one dummy.
+		#bullet_instance.rot = (bullet_instance.position).angle_to(bullet_instance.target)
 		get_tree().root.add_child(bullet_instance)
 		var tween = create_tween()
-		tween.tween_callback(func(): fireable = true).set_delay(1)
+		tween.tween_callback(func(): fireable = true).set_delay(2)
 
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:

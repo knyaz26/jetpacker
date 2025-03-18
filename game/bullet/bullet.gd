@@ -2,8 +2,9 @@ extends Node2D
 
 var target
 var rot
-var flip
+var flip = false
 var vel = Vector2(0, 0)
+var active = true
 
 func _ready() -> void:
 	$AnimatedSprite2D.flip_h = !(target.x > global_position.x)
@@ -12,8 +13,9 @@ func _ready() -> void:
 	$Timer.start(1.0)
 	
 func _process(delta: float) -> void:
-	movement(delta)
-	check_for_destroy_conditions()
+	if active == true:
+		movement(delta)
+		check_for_destroy_conditions()
 
 func movement(delta):
 	position += vel * delta
@@ -31,3 +33,8 @@ func _on_timer_timeout() -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	active = false
+	$AnimatedSprite2D.play("bullet_collision")
