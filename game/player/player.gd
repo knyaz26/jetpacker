@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @onready var gravity_on = true
 @onready var fireable = true
@@ -14,23 +14,24 @@ func _process(delta: float) -> void:
 	check_input_and_fire()
 	check_where_player_looks()
 	apply_gravity(delta)
+	move_and_slide()
 	
 func apply_gravity(delta):
-	if gravity_on:
-		position.y += 300 * delta
+	if gravity_on and velocity.y < 8000 * delta:
+		velocity.y += 200 * delta
 	
 func check_input_and_fly(delta):
-	if(Input.is_key_pressed(KEY_W)):
+	if(Input.is_key_pressed(KEY_W) and velocity.y > -5000 * delta):
 		gravity_on = false
-		position.y -= 200 * delta
+		velocity.y -= 200 * delta
 	else:
 		gravity_on = true
 		
 func check_input_and_move(delta):
-	if Input.is_key_pressed(KEY_D):
-		position.x += 100 * delta
-	if Input.is_key_pressed(KEY_A):
-		position.x -= 100 * delta
+	if Input.is_key_pressed(KEY_D) and velocity.x < 5000 * delta:
+		velocity.x += 200 * delta
+	if Input.is_key_pressed(KEY_A) and velocity.x > -5000 * delta:
+		velocity.x += -200 * delta
 
 func check_where_player_looks():
 	if get_global_mouse_position().x > position.x:
@@ -60,5 +61,3 @@ func check_input_and_fire():
 		fireable = false
 		var tween = create_tween()
 		tween.tween_callback(func(): fireable = true).set_delay(0.5)
-	
-	
