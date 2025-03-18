@@ -76,3 +76,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damaged")
+	velocity += sign(area.get_parent().target) * 50
