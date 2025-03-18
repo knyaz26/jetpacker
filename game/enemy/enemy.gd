@@ -1,21 +1,22 @@
 extends CharacterBody2D
 
-@onready var state = "active"
+@onready var state = "alive"
 @onready var fireable = true
 @onready var bullet_scene = preload("res://game/bullet/bullet.tscn")
+@onready var health = 3
 
 func _ready():
 	pass
 	
 func _process(delta: float):
 	match state:
-		"active":
+		"alive":
 			face_player()
 			gun_aim()
 			decide_and_shoot()
-		"inactive":
+			move_and_slide()
+		"dead":
 			pass
-	move_and_slide()
 	
 func face_player():
 	if GameManager.position_player.x > global_position.x:
@@ -62,6 +63,9 @@ func _on_animated_sprite_2d_2_animation_finished() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damage")
 	velocity += sign(GameManager.position_player - global_position) * -30
+	health -= 1
+	if !health:
+		state = "dead"
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("default")

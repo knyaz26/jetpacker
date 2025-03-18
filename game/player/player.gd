@@ -3,19 +3,25 @@ extends CharacterBody2D
 @onready var gravity_on = true
 @onready var fireable = true
 @onready var bullet_scene = preload("res://game/bullet/bullet.tscn")
+@onready var health = 3
+@onready var state = "alive"
 
 func _ready() -> void:
 	pass
 
 
 func _process(delta: float) -> void:
-	game_manager_update()
-	check_input_and_fly(delta)
-	check_input_and_move(delta)
-	check_input_and_fire()
-	check_where_player_looks()
-	apply_gravity(delta)
-	move_and_slide()
+	match state:
+		"alive":
+			game_manager_update()
+			check_input_and_fly(delta)
+			check_input_and_move(delta)
+			check_input_and_fire()
+			check_where_player_looks()
+			apply_gravity(delta)
+			move_and_slide()
+		"dead":
+			pass
 	
 func apply_gravity(delta):
 	if gravity_on and velocity.y < 8000 * delta:
@@ -77,3 +83,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damaged")
 	velocity += sign(area.get_parent().target) * 50
+	health -= 1
+	if !health:
+		state = "dead"
