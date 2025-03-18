@@ -1,15 +1,21 @@
 extends Node2D
 
 @onready var target = get_global_mouse_position()
+var rot
+var flip
 
 func _ready() -> void:
-	$Sprite2D.flip_h = !(get_global_mouse_position().x > global_position.x)
-
+	$Sprite2D.flip_h = !(target.x > global_position.x)
+	rotation = rot
+	$Sprite2D.flip_h = flip
+	
 func _process(delta: float) -> void:
-	move_towards_target(delta)
+	movement(delta)
+	destroy()
 
-func move_towards_target(delta):
-	if global_position != target:
-		var direction = (target - position).normalized()
-		position += direction * 300 * delta
-		rotation = ((target - global_position).angle())
+func movement(delta):
+	position = position.move_toward(target, 300 * delta)
+
+func destroy():
+	if position == target:
+		queue_free()

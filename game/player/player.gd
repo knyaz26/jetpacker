@@ -52,8 +52,11 @@ func check_where_player_looks():
 func check_input_and_fire():
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and fireable:
 		var bullet_instance = bullet_scene.instantiate()
-		get_tree().root.add_child(bullet_instance)
 		bullet_instance.position = $AnimatedSprite2D/AnimatedSprite2D2/firepoint.global_position
+		bullet_instance.rot = $AnimatedSprite2D/AnimatedSprite2D2.rotation
+		bullet_instance.flip = $AnimatedSprite2D.flip_h
+		#bullet_instance.vel = velocity
+		get_tree().root.add_child(bullet_instance)
 		fireable = false
 		var tween = create_tween()
 		tween.tween_callback(func(): fireable = true).set_delay(0.5)
