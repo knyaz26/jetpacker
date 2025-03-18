@@ -53,6 +53,7 @@ func check_where_player_looks():
 	
 func check_input_and_fire():
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and fireable:
+		$AnimatedSprite2D/AnimatedSprite2D2.play("fireing")
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.position = $AnimatedSprite2D/AnimatedSprite2D2/firepoint.global_position
 		bullet_instance.rot = $AnimatedSprite2D/AnimatedSprite2D2.rotation
@@ -66,3 +67,7 @@ func check_input_and_fire():
 
 func game_manager_update():
 	GameManager.position_player = global_position
+
+
+func _on_animated_sprite_2d_2_animation_finished() -> void:
+	$AnimatedSprite2D/AnimatedSprite2D2.play("default")

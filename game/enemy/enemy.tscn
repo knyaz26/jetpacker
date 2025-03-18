@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://diagku6i77b4j"]
+[gd_scene load_steps=10 format=3 uid="uid://diagku6i77b4j"]
 
 [ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack_flames.png" id="1_3fqy6"]
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_66hjf"]
 [ext_resource type="Texture2D" uid="uid://bmwed62l82xxu" path="res://game/enemy/enemy.png" id="1_ic0ah"]
 [ext_resource type="Texture2D" uid="uid://ctdpc8wibft61" path="res://game/enemy/enemy_gun.png" id="3_h2i6r"]
+[ext_resource type="Texture2D" uid="uid://dg6m3sqigv38q" path="res://game/enemy/enemy_gun_fired.png" id="5_pndd3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkrtk"]
 radius = 5.0
@@ -30,9 +31,17 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_h2i6r")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pndd3")
+}],
+"loop": false,
+"name": &"fired",
+"speed": 3.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -61,3 +70,5 @@ offset = Vector2(2, 1)
 [node name="firepoint" type="Node2D" parent="AnimatedSprite2D2"]
 position = Vector2(8, 0)
 rotation = -0.0120388
+
+[connection signal="animation_finished" from="AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]

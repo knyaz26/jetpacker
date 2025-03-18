@@ -36,9 +36,10 @@ func gun_aim():
 	if !GameManager.position_player.x > global_position.x:
 		$AnimatedSprite2D2.rotation_degrees += 180
 
+#if you ever come back to this code to figure out whats going on, i dont know either.
 func decide_and_shoot():
-	#checks if player is in range to even try to shoot.
 	if GameManager.position_player.distance_to(global_position) < 250 and fireable:
+		$AnimatedSprite2D2.play("fired")
 		fireable = false
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.position = $AnimatedSprite2D2/firepoint.global_position
@@ -51,3 +52,7 @@ func decide_and_shoot():
 		get_tree().root.add_child(bullet_instance)
 		var tween = create_tween()
 		tween.tween_callback(func(): fireable = true).set_delay(1)
+
+
+func _on_animated_sprite_2d_2_animation_finished() -> void:
+	$AnimatedSprite2D2.play("default")
