@@ -3,7 +3,7 @@ extends Node2D
 var target
 var rot
 var flip
-var vel
+var vel = Vector2(0, 0)
 
 func _ready() -> void:
 	$AnimatedSprite2D.flip_h = !(target.x > global_position.x)
@@ -17,7 +17,10 @@ func _process(delta: float) -> void:
 
 func movement(delta):
 	position += vel * delta
-	position = position.move_toward(target + position , 300 * delta)
+	if vel != Vector2(0, 0):
+		position = position.move_toward(target + position , 300 * delta)
+	else:
+		position = position.move_toward(target , 300 * delta)
 
 func check_for_destroy_conditions():
 	pass
