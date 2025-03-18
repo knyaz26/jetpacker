@@ -1,27 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c312phg0rogjh"]
+[gd_scene load_steps=3 format=3 uid="uid://c312phg0rogjh"]
 
 [ext_resource type="PackedScene" uid="uid://v4hhqus1snc7" path="res://game/player/player.tscn" id="1_shpwu"]
-[ext_resource type="Texture2D" uid="uid://c3x1v4j201y0a" path="res://test_background.png" id="1_yphre"]
 [ext_resource type="PackedScene" uid="uid://diagku6i77b4j" path="res://game/enemy/enemy.tscn" id="3_n2ivx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkfbg"]
-size = Vector2(626, 20)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_yphre")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-position = Vector2(4, 97)
-shape = SubResource("RectangleShape2D_qkfbg")
-
-[node name="CharacterBody2D" parent="Sprite2D/StaticBody2D" instance=ExtResource("3_n2ivx")]
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_n2ivx")]
 position = Vector2(-236, 69)
 
-[node name="CharacterBody2D2" parent="Sprite2D/StaticBody2D" instance=ExtResource("3_n2ivx")]
+[node name="CharacterBody2D3" parent="." instance=ExtResource("3_n2ivx")]
 position = Vector2(-253, -112)
 
 [node name="player" parent="." instance=ExtResource("1_shpwu")]

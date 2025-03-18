@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfb2kwx521uuc"]
+
+[ext_resource type="Script" path="res://game/UI/Main_Menu/main_menu.gd" id="1_53bbt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyhh4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixpl0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pw111"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_53bbt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.611765, 0.843137, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kyhh4")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "[P] play"
+flat = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ixpl0")
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "[S] settings"
+flat = true
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pw111")
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "[Q] quit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
