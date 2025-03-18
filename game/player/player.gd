@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	game_manager_update()
 	check_input_and_fly(delta)
 	check_input_and_move(delta)
 	check_input_and_fire()
@@ -62,3 +63,6 @@ func check_input_and_fire():
 		fireable = false
 		var tween = create_tween()
 		tween.tween_callback(func(): fireable = true).set_delay(0.5)
+
+func game_manager_update():
+	GameManager.position_player = global_position
