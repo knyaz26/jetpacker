@@ -56,7 +56,8 @@ func check_input_and_fire():
 		bullet_instance.position = $AnimatedSprite2D/AnimatedSprite2D2/firepoint.global_position
 		bullet_instance.rot = $AnimatedSprite2D/AnimatedSprite2D2.rotation
 		bullet_instance.flip = $AnimatedSprite2D.flip_h
-		#bullet_instance.vel = velocity
+		bullet_instance.vel = velocity
+		bullet_instance.target = get_local_mouse_position()
 		get_tree().root.add_child(bullet_instance)
 		fireable = false
 		var tween = create_tween()
