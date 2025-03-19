@@ -1,6 +1,7 @@
 extends Node
 
 @onready var position_player = Vector2(0, 0)
+@onready var score = 0
 
 func _ready() -> void:
 	pass

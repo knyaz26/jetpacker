@@ -11,9 +11,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	game_manager_update()
+	update_score()
 	match state:
 		"alive":
-			game_manager_update()
 			check_input_and_fly(delta)
 			check_input_and_move(delta)
 			check_input_and_fire()
@@ -86,3 +87,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	health -= 1
 	if !health:
 		state = "dead"
+
+func update_score():
+	$UI/Label.text = "score" + str(GameManager.score)

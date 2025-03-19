@@ -66,6 +66,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	health -= 1
 	if !health:
 		state = "dead"
+		GameManager.score += 1
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("default")
