@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://v4hhqus1snc7"]
+[gd_scene load_steps=17 format=3 uid="uid://v4hhqus1snc7"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_eipwq"]
 [ext_resource type="Texture2D" uid="uid://by07xcbt5n8iv" path="res://game/player/player.png" id="1_pe1sp"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack_flames.png" id="4_egugc"]
 [ext_resource type="Texture2D" uid="uid://cw8q634ry07go" path="res://game/player/players_gun1.png" id="4_kvtsn"]
 [ext_resource type="Texture2D" uid="uid://daylo61yxew5l" path="res://game/player/players_gun2.png" id="5_kp28p"]
+[ext_resource type="Texture2D" uid="uid://cp605s7uojix1" path="res://UI/heart_full.png" id="7_iw5uv"]
+[ext_resource type="Texture2D" uid="uid://bf7vrgxs25msx" path="res://UI/heart_empty.png" id="8_gvbd3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2ayv"]
 radius = 2.0
@@ -56,6 +58,63 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w20e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_iw5uv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gvbd3")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ps87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_iw5uv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gvbd3")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_co0kd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_iw5uv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gvbd3")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}]
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_eipwq")
 
@@ -96,10 +155,28 @@ position = Vector2(10, 0)
 
 [node name="Label" type="Label" parent="UI"]
 offset_left = -319.0
-offset_top = -179.0
+offset_top = -167.0
 offset_right = -259.0
-offset_bottom = -156.0
+offset_bottom = -144.0
 text = "score: 0"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(-311, -171)
+sprite_frames = SubResource("SpriteFrames_5w20e")
+animation = &"empty"
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(-297, -171)
+sprite_frames = SubResource("SpriteFrames_6ps87")
+animation = &"empty"
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(-283, -171)
+sprite_frames = SubResource("SpriteFrames_co0kd")
+animation = &"empty"
+autoplay = "default"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

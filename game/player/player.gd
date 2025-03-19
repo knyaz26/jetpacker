@@ -13,6 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	game_manager_update()
 	update_score()
+	update_heart_state()
 	match state:
 		"alive":
 			check_input_and_fly(delta)
@@ -89,4 +90,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		state = "dead"
 
 func update_score():
-	$UI/Label.text = "score" + str(GameManager.score)
+	$UI/Label.text = "score: " + str(GameManager.score)
+
+func update_heart_state():
+	if health < 3:
+		$UI/AnimatedSprite2D3.play("empty")
+	if health < 2:
+		$UI/AnimatedSprite2D2.play("empty")
+	if health < 1:
+		$UI/AnimatedSprite2D.play("empty")
