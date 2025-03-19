@@ -1,11 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://diagku6i77b4j"]
+[gd_scene load_steps=19 format=3 uid="uid://diagku6i77b4j"]
 
-[ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack_flames.png" id="1_3fqy6"]
+[ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack/jatpack_flames.png" id="1_3fqy6"]
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_66hjf"]
 [ext_resource type="Texture2D" uid="uid://bmwed62l82xxu" path="res://game/enemy/enemy.png" id="1_ic0ah"]
 [ext_resource type="Texture2D" uid="uid://ctdpc8wibft61" path="res://game/enemy/enemy_gun.png" id="3_h2i6r"]
 [ext_resource type="Texture2D" uid="uid://dbidlc4kp1af6" path="res://game/enemy/damage_enemy.png" id="3_qm0ko"]
+[ext_resource type="Texture2D" uid="uid://dkma4a7naiyi8" path="res://effects/explosion/animation_explosion1.png" id="4_s42bj"]
+[ext_resource type="Texture2D" uid="uid://bh7tq4tlparel" path="res://effects/explosion/animation_explosion2.png" id="5_nmn00"]
 [ext_resource type="Texture2D" uid="uid://dg6m3sqigv38q" path="res://game/enemy/enemy_gun_fired.png" id="5_pndd3"]
+[ext_resource type="Texture2D" uid="uid://drnbyrob6i2mk" path="res://effects/explosion/animation_explosion3.png" id="6_6r5aj"]
+[ext_resource type="Texture2D" uid="uid://di7mxhxjgmwv7" path="res://effects/explosion/animation_explosion4.png" id="7_0gavt"]
+[ext_resource type="Texture2D" uid="uid://dsjyccfxaldtp" path="res://effects/explosion/animation_explosion5.png" id="8_rj20b"]
+[ext_resource type="Texture2D" uid="uid://fgws2w7osxc7" path="res://effects/explosion/animation_explosion6.png" id="9_i2ccq"]
+[ext_resource type="Texture2D" uid="uid://doye5udrce3gh" path="res://effects/explosion/animation_explosion7.png" id="10_3eme5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkrtk"]
 radius = 4.0
@@ -28,6 +35,32 @@ animations = [{
 "loop": false,
 "name": &"damage",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_s42bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nmn00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6r5aj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0gavt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rj20b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i2ccq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3eme5")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -81,7 +114,10 @@ scale_amount_curve = SubResource("Curve_77d6s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6uu3x")
+animation = &"dead"
 autoplay = "default"
+frame = 6
+frame_progress = 1.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h2b8u")

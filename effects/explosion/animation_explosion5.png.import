@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cimt31lvkxalv"
-path="res://.godot/imported/jatpack_flames.png-16d8ef411e15e58db309e92d16d614c4.ctex"
+uid="uid://dsjyccfxaldtp"
+path="res://.godot/imported/animation_explosion5.png-0c95fa695534fc1cc050234aad085b22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://effects/jatpack_flames.png"
-dest_files=["res://.godot/imported/jatpack_flames.png-16d8ef411e15e58db309e92d16d614c4.ctex"]
+source_file="res://effects/explosion/animation_explosion5.png"
+dest_files=["res://.godot/imported/animation_explosion5.png-0c95fa695534fc1cc050234aad085b22.ctex"]
 
 [params]
 

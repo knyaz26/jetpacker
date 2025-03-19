@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 			apply_gravity(delta)
 			move_and_slide()
 		"dead":
-			pass
+			play_death_animation()
 	
 func apply_gravity(delta):
 	if gravity_on and velocity.y < 8000 * delta:
@@ -99,3 +99,8 @@ func update_heart_state():
 		$UI/AnimatedSprite2D2.play("empty")
 	if health < 1:
 		$UI/AnimatedSprite2D.play("empty")
+
+func play_death_animation():
+	$AnimatedSprite2D.play("dead")
+	$AnimatedSprite2D/AnimatedSprite2D2.visible = false
+	$CPUParticles2D.visible = false

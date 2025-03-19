@@ -1,13 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://v4hhqus1snc7"]
+[gd_scene load_steps=24 format=3 uid="uid://v4hhqus1snc7"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_eipwq"]
 [ext_resource type="Texture2D" uid="uid://by07xcbt5n8iv" path="res://game/player/player.png" id="1_pe1sp"]
 [ext_resource type="Texture2D" uid="uid://covdqwrmrcpu0" path="res://game/player/damage.png" id="2_bkkak"]
-[ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack_flames.png" id="4_egugc"]
+[ext_resource type="Texture2D" uid="uid://dkma4a7naiyi8" path="res://effects/explosion/animation_explosion1.png" id="4_b6hec"]
+[ext_resource type="Texture2D" uid="uid://cimt31lvkxalv" path="res://effects/jatpack/jatpack_flames.png" id="4_egugc"]
 [ext_resource type="Texture2D" uid="uid://cw8q634ry07go" path="res://game/player/players_gun1.png" id="4_kvtsn"]
 [ext_resource type="Texture2D" uid="uid://daylo61yxew5l" path="res://game/player/players_gun2.png" id="5_kp28p"]
+[ext_resource type="Texture2D" uid="uid://bh7tq4tlparel" path="res://effects/explosion/animation_explosion2.png" id="5_tb6uw"]
+[ext_resource type="Texture2D" uid="uid://drnbyrob6i2mk" path="res://effects/explosion/animation_explosion3.png" id="6_m5lp1"]
+[ext_resource type="Texture2D" uid="uid://di7mxhxjgmwv7" path="res://effects/explosion/animation_explosion4.png" id="7_eh08k"]
 [ext_resource type="Texture2D" uid="uid://cp605s7uojix1" path="res://UI/heart_full.png" id="7_iw5uv"]
 [ext_resource type="Texture2D" uid="uid://bf7vrgxs25msx" path="res://UI/heart_empty.png" id="8_gvbd3"]
+[ext_resource type="Texture2D" uid="uid://dsjyccfxaldtp" path="res://effects/explosion/animation_explosion5.png" id="8_nxfhh"]
+[ext_resource type="Texture2D" uid="uid://fgws2w7osxc7" path="res://effects/explosion/animation_explosion6.png" id="9_7mp21"]
+[ext_resource type="Texture2D" uid="uid://doye5udrce3gh" path="res://effects/explosion/animation_explosion7.png" id="10_mxi15"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2ayv"]
 radius = 2.0
@@ -29,6 +36,32 @@ animations = [{
 "loop": false,
 "name": &"damaged",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b6hec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tb6uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m5lp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eh08k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nxfhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7mp21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mxi15")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -139,7 +172,10 @@ scale_amount_curve = SubResource("Curve_ii8xb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a76tj")
+animation = &"dead"
 autoplay = "default"
+frame = 6
+frame_progress = 1.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_01lwq")

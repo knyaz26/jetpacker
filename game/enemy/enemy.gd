@@ -16,7 +16,7 @@ func _process(delta: float):
 			decide_and_shoot()
 			move_and_slide()
 		"dead":
-			pass
+			play_death_animation()
 	
 func face_player():
 	if GameManager.position_player.x > global_position.x:
@@ -70,3 +70,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("default")
+
+func play_death_animation():
+	$AnimatedSprite2D.play("dead")
+	$AnimatedSprite2D2.visible = false
+	$CPUParticles2D.visible = false
