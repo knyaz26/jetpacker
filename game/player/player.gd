@@ -91,8 +91,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damaged")
-	if not area.get_parent().target is CharacterBody2D:
-		velocity += sign(area.get_parent().target) * 50
+	velocity += sign(area.get_parent().target) * 50
 	health -= 1
 	if !health:
 		state = "dead"
