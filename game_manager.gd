@@ -5,13 +5,14 @@ extends Node
 @onready var timer: Timer
 @onready var song: AudioStreamPlayer
 @onready var reset_enemies = false
-@onready var game_on = false
+@onready var game_on = true
 
 @onready var enemy_scene = preload("res://game/enemy/enemy.tscn")
 
 func _ready() -> void:
 	enemy_spawn()
 	play_song()
+	game_on = false
 
 
 func _process(delta: float) -> void:
@@ -24,7 +25,7 @@ func enemy_spawn():
 	if game_on:
 		timer = Timer.new()
 		add_child(timer)
-		timer.start(7)
+		timer.start(6)
 		timer.timeout.connect(func(): 
 			var enemy_instance = enemy_scene.instantiate()
 			get_tree().root.add_child(enemy_instance)
