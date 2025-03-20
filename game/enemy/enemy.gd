@@ -14,6 +14,7 @@ func _process(delta: float):
 			face_player()
 			gun_aim()
 			decide_and_shoot()
+			pathfind(delta)
 			move_and_slide()
 		"dead":
 			play_death_animation()
@@ -78,3 +79,22 @@ func play_death_animation():
 	$AnimatedSprite2D.play("dead")
 	$AnimatedSprite2D2.visible = false
 	$CPUParticles2D.visible = false
+
+func pathfind(delta):
+	if position.distance_to(GameManager.position_player) > 200:
+		approach(delta)
+	elif position.distance_to(GameManager.position_player) < 200 && position.distance_to(GameManager.position_player) > 100:
+		distance(delta)
+	elif position.distance_to(GameManager.position_player) < 100:
+		avoid(delta)
+		
+func approach(delta):
+	velocity.x = move_toward(velocity.x, (GameManager.position_player.x - global_position.x) / (GameManager.position_player - global_position).length() * 2000 * delta, 200 * delta)
+	velocity.y = move_toward(velocity.y, (GameManager.position_player.y - global_position.y) / (GameManager.position_player - global_position).length() * 1000 * delta, 200 * delta)
+	
+func distance(delta):
+	pass
+	
+func avoid(delta):
+	velocity.x = move_toward(velocity.x, -(GameManager.position_player.x - global_position.x) / (GameManager.position_player - global_position).length() * 1000, 100 * delta)
+	velocity.y = move_toward(velocity.y, -(GameManager.position_player.y - global_position.y) / (GameManager.position_player - global_position).length() * 500, 100 * delta)
