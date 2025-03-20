@@ -7,6 +7,16 @@ extends Node
 @onready var enemy_scene = preload("res://game/enemy/enemy.tscn")
 
 func _ready() -> void:
+	enemy_spawn()
+
+
+func _process(delta: float) -> void:
+	pass
+
+func reset():
+	score = 0
+	
+func enemy_spawn():
 	timer = Timer.new()
 	add_child(timer)
 	timer.start(7)
@@ -16,7 +26,3 @@ func _ready() -> void:
 		var enemy_spawn_position = Vector2(400 * cos(randi_range(0, 360)), 400 * sin(randi_range(0, 360)))
 		enemy_instance.global_position = enemy_spawn_position
 		)
-
-
-func _process(delta: float) -> void:
-	pass
