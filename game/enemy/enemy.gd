@@ -9,6 +9,7 @@ func _ready():
 	pass
 	
 func _process(delta: float):
+	reset_enemies()
 	match state:
 		"alive":
 			face_player()
@@ -65,8 +66,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damage")
 	velocity += sign(GameManager.position_player - global_position) * -30
 	health -= 1
+	$Damaged.play()
 	if !health:
 		state = "dead"
+		$Explosion.play()
 		GameManager.score += 1
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -98,3 +101,7 @@ func distance(delta):
 func avoid(delta):
 	velocity.x = move_toward(velocity.x, -(GameManager.position_player.x - global_position.x) / (GameManager.position_player - global_position).length() * 1000, 100 * delta)
 	velocity.y = move_toward(velocity.y, -(GameManager.position_player.y - global_position.y) / (GameManager.position_player - global_position).length() * 500, 100 * delta)
+
+func reset_enemies():
+	if GameManager.reset_enemies:
+		queue_free()

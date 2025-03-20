@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djyffwpfaji7b"]
+[gd_scene load_steps=11 format=3 uid="uid://djyffwpfaji7b"]
 
 [ext_resource type="Script" path="res://game/bullet/bullet.gd" id="1_n8o0f"]
 [ext_resource type="Texture2D" uid="uid://b5n6wsftmcjpt" path="res://game/bullet/bullet.png" id="1_oicl1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bj41hnqhqxowl" path="res://game/bullet/bullet_collision3.png" id="4_yehjf"]
 [ext_resource type="Texture2D" uid="uid://de756jtf7knvf" path="res://game/bullet/bullet_collision4.png" id="5_w0t3k"]
 [ext_resource type="Texture2D" uid="uid://js5yxq4vqgq4" path="res://game/bullet/bullet_collision5.png" id="6_tuglk"]
+[ext_resource type="AudioStream" uid="uid://dcjsijxwljvfu" path="res://SFX/shoot.mp3" id="8_6xqa3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrkft"]
 size = Vector2(2, 1)
@@ -59,6 +60,10 @@ one_shot = true
 sprite_frames = SubResource("SpriteFrames_0wr8j")
 animation = &"bullet_collision"
 autoplay = "default"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6xqa3")
+volume_db = -20.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

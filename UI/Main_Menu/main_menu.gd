@@ -8,8 +8,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_P):
 		get_tree().change_scene_to_file("res://game/arena/arena.tscn")
+		GameManager.reset_enemies = false
 	if Input.is_key_pressed(KEY_S):
-		pass #add settings here.
+		get_tree().change_scene_to_file("res://UI/settings/settings.tscn")
 	if Input.is_key_pressed(KEY_Q):
 		get_tree().quit()
 

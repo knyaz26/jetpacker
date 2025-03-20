@@ -93,8 +93,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damaged")
 	velocity += sign(area.get_parent().target) * 50
 	health -= 1
+	$Damaged.play()
 	if !health:
+		$Explosion.play()
 		state = "dead"
+		GameManager.reset_enemies = true
 
 func update_score():
 	$UI/Label.text = "score: " + str(GameManager.score)

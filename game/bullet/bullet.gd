@@ -11,6 +11,7 @@ func _ready() -> void:
 	rotation = rot
 	$AnimatedSprite2D.flip_h = flip
 	$Timer.start(1.0)
+	$Shoot.play()
 	
 func _process(delta: float) -> void:
 	if active == true:
