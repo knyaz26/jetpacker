@@ -4,6 +4,7 @@ var pos
 
 func _ready() -> void:
 	position = pos
+	GameManager.game_on = false
 
 func _process(delta: float) -> void:
 	update_scoreboard()

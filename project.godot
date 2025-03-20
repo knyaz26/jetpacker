@@ -13,7 +13,7 @@ config_version=5
 config/name="jetpacker"
 run/main_scene="res://UI/Main_Menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="icon.png"
 
 [autoload]
 
