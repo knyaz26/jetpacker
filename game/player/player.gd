@@ -80,7 +80,14 @@ func _on_animated_sprite_2d_2_animation_finished() -> void:
 	$AnimatedSprite2D/AnimatedSprite2D2.play("default")
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	$AnimatedSprite2D.play("default")
+	if $AnimatedSprite2D.animation == "fireing" || $AnimatedSprite2D.animation == "damaged":
+		$AnimatedSprite2D.play("default")
+	elif $AnimatedSprite2D.animation == "dead":
+		var game_over_screen_scene = preload("res://UI/game_over_screen/game_over_scene.tscn")
+		var game_over_screen_instance = game_over_screen_scene.instantiate()
+		game_over_screen_instance.pos = position
+		get_tree().root.add_child(game_over_screen_instance)
+		queue_free()
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("damaged")

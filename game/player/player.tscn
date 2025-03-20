@@ -174,8 +174,6 @@ scale_amount_curve = SubResource("Curve_ii8xb")
 sprite_frames = SubResource("SpriteFrames_a76tj")
 animation = &"dead"
 autoplay = "default"
-frame = 6
-frame_progress = 1.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_01lwq")
@@ -194,6 +192,7 @@ offset_left = -319.0
 offset_top = -167.0
 offset_right = -259.0
 offset_bottom = -144.0
+theme_override_font_sizes/font_size = 10
 text = "score: 0"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]

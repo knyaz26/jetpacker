@@ -69,7 +69,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		GameManager.score += 1
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	$AnimatedSprite2D.play("default")
+	if $AnimatedSprite2D.animation != "dead":
+		$AnimatedSprite2D.play("default")
+	else:
+		queue_free()
 
 func play_death_animation():
 	$AnimatedSprite2D.play("dead")
